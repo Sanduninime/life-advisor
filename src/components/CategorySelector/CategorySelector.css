@@ -1,0 +1,133 @@
+.category-selector {
+    margin-bottom: var(--spacing-2xl);
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.category-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xl);
+    background: linear-gradient(90deg, #6366f1, #ec4899, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Category Grid Layout */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Individual Category Button */
+.category-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow animation strip */
+.category-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: skewX(-20deg);
+    transition: all 0.8s ease;
+}
+
+.category-button:hover::before {
+    left: 150%;
+}
+
+/* Hover effects */
+.category-button:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+}
+
+/* Active Category Style */
+.category-button.active {
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    border: none;
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+    transform: translateY(-4px);
+}
+
+.category-button.active:hover {
+    transform: translateY(-7px);
+}
+
+/* Icon & Label */
+.category-icon {
+    font-size: 2.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #a5b4fc;
+}
+
+.category-button:hover .category-icon {
+    transform: scale(1.25) rotate(8deg);
+    color: #f9a8d4;
+}
+
+.category-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #f1f5f9;
+    letter-spacing: 0.3px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .category-button {
+        padding: 1.5rem;
+    }
+
+    .category-icon {
+        font-size: 2rem;
+    }
+
+    .category-label {
+        font-size: 1rem;
+    }
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

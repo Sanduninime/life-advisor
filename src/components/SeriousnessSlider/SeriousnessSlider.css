@@ -1,0 +1,179 @@
+.seriousness-slider {
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-xl);
+    background: rgba(33, 36, 51, 0.75);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(95, 39, 205, 0.2);
+    box-shadow: var(--shadow-md), inset 0 0 15px rgba(72, 219, 251, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all var(--transition-normal);
+}
+
+.seriousness-slider:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.slider-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-accent);
+    text-shadow: 0 0 10px rgba(72, 219, 251, 0.5);
+    letter-spacing: 1px;
+}
+
+.slider-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.slider-wrapper {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.slider-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    transform: translateY(-50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slider-progress {
+    height: 100%;
+    border-radius: 6px;
+    background: var(--gradient-cool);
+    box-shadow: 0 0 15px rgba(72, 219, 251, 0.3);
+    transition: width var(--transition-slow);
+    position: relative;
+}
+
+.slider-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 100%;
+    }
+}
+
+.slider {
+    width: 100%;
+    height: 10px;
+    border-radius: 6px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 2;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gradient-chaos);
+    border: 3px solid #fff;
+    box-shadow: 0 0 12px rgba(72, 219, 251, 0.6);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8), 0 0 10px rgba(72, 219, 251, 0.6);
+}
+
+.slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gradient-chaos);
+    border: 3px solid #fff;
+    box-shadow: 0 0 12px rgba(72, 219, 251, 0.6);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.8), 0 0 10px rgba(72, 219, 251, 0.6);
+}
+
+.slider-labels {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-sm);
+    text-align: center;
+}
+
+.slider-label {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+}
+
+.slider-label.active {
+    color: var(--text-accent);
+    font-weight: 700;
+    transform: scale(1.1);
+    text-shadow: 0 0 8px rgba(72, 219, 251, 0.6);
+}
+
+.current-level {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(31, 34, 48, 0.8);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 0 10px rgba(72, 219, 251, 0.1);
+}
+
+.level-indicator {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .seriousness-slider {
+        padding: var(--spacing-lg);
+    }
+
+    .slider-labels {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xs);
+    }
+
+    .slider-label {
+        font-size: var(--font-size-xs);
+    }
+
+    .level-indicator {
+        font-size: var(--font-size-base);
+    }
+}
